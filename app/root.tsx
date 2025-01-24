@@ -5,12 +5,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  type LinkDescriptor,
 } from "react-router";
 import type { Route } from "./+types/root";
-import resetStylesheet from "./reset.css?url";
+import resetStylesheet from "./styles/reset.css?url";
+import fontsStylesheet from "./styles/fonts.css?url";
 
 export function links(): Route.LinkDescriptors {
-  return [{ rel: "stylesheet", href: resetStylesheet }];
+  return [
+    preloadFont("/fonts/Kalam-Light.ttf"),
+    preloadFont("/fonts/Kalam-Regular.ttf"),
+    preloadFont("/fonts/Kalam-Bold.ttf"),
+    { rel: "stylesheet", href: resetStylesheet },
+    { rel: "stylesheet", href: fontsStylesheet },
+  ];
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -62,4 +70,14 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
+}
+
+function preloadFont(href: string): LinkDescriptor {
+  return {
+    rel: "preload",
+    as: "font",
+    href,
+    type: "font/ttf",
+    crossOrigin: "anonymous",
+  };
 }
