@@ -1,0 +1,66 @@
+body {
+  background-color: #f5f5f5;
+  font-family: "Kalam", sans-serif;
+}
+
+main {
+  height: 100vh;
+}
+
+#notebook {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  --notebook-width: 800px;
+}
+
+#notebook ul {
+  position: relative;
+  flex-grow: 1;
+  background: linear-gradient(to bottom, #f5f5f5 35px, #00b0d7 1px) 0 -35px;
+  background-size: 100% 36px;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+header {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 2rem;
+    height: 100vh;
+    width: 1px;
+    background: #db4034;
+  }
+}
+
+header > a {
+  display: block;
+  padding-block-start: 2rem;
+}
+
+header,
+li {
+  width: 100%;
+  max-width: var(--notebook-width);
+  margin-inline: auto;
+  padding-inline: 4rem;
+}
+
+li {
+  font-size: 1.5rem;
+  line-height: 35px;
+  list-style: none;
+}

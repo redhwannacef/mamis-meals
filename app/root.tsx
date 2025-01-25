@@ -8,16 +8,18 @@ import {
   type LinkDescriptor,
 } from "react-router";
 import type { Route } from "./+types/root";
-import resetStylesheet from "./styles/reset.css?url";
-import fontsStylesheet from "./styles/fonts.css?url";
+import resetStyles from "./styles/reset.css?url";
+import fontsStyles from "./styles/fonts.css?url";
+import globalStyles from "./styles/global.css?url";
 
 export function links(): Route.LinkDescriptors {
   return [
     preloadFont("/fonts/Kalam-Light.ttf"),
     preloadFont("/fonts/Kalam-Regular.ttf"),
     preloadFont("/fonts/Kalam-Bold.ttf"),
-    { rel: "stylesheet", href: resetStylesheet },
-    { rel: "stylesheet", href: fontsStylesheet },
+    { rel: "stylesheet", href: resetStyles },
+    { rel: "stylesheet", href: fontsStyles },
+    { rel: "stylesheet", href: globalStyles },
   ];
 }
 

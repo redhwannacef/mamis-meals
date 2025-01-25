@@ -24,6 +24,10 @@ main {
   & > * + * {
     margin-block-start: 2rem;
   }
+  
+  & > a {
+    display: block;
+  }
 }
 
 h1 {
