@@ -14,9 +14,9 @@ import globalStyles from "./styles/global.css?url";
 
 export function links(): Route.LinkDescriptors {
   return [
-    preloadFont("/fonts/Kalam-Light.ttf"),
-    preloadFont("/fonts/Kalam-Regular.ttf"),
-    preloadFont("/fonts/Kalam-Bold.ttf"),
+    preloadFont("/mamis-meals/fonts/Kalam-Light.ttf"),
+    preloadFont("/mamis-meals/fonts/Kalam-Regular.ttf"),
+    preloadFont("/mamis-meals/fonts/Kalam-Bold.ttf"),
     { rel: "stylesheet", href: resetStyles },
     { rel: "stylesheet", href: fontsStyles },
     { rel: "stylesheet", href: globalStyles },
@@ -29,6 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <Meta />
         <Links />
       </head>

@@ -6,6 +6,7 @@ import markdownit from "markdown-it";
 import graymatter from "gray-matter";
 
 export default defineConfig({
+  base: "/mamis-meals/",
   plugins: [reactRouter(), tsconfigPaths(), recipesMdPlugin()],
 });
 
