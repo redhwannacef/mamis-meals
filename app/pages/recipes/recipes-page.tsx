@@ -1,6 +1,7 @@
 import type { Route } from "./+types/recipes-page";
 import style from "./recipes-page.css?url";
 import { Link } from "react-router";
+import { recipes } from "virtual:recipes";
 
 export function meta(): Route.MetaDescriptors {
   return [
@@ -16,20 +17,7 @@ export function links(): Route.LinkDescriptors {
   return [{ rel: "stylesheet", href: style }];
 }
 
-export function clientLoader() {
-  return {
-    recipes: [
-      {
-        title: "Msemmen",
-        slug: "msemmen",
-      },
-    ],
-  };
-}
-
-export default function Page({ loaderData }: Route.ComponentProps) {
-  const { recipes } = loaderData;
-
+export default function Page() {
   return (
     <main>
       <section id="notebook">
@@ -38,7 +26,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
           <h1>Recipes</h1>
         </header>
         <ul>
-          {recipes.map((recipe) => (
+          {Object.values(recipes).map((recipe) => (
             <li key={recipe.slug}>
               <Link to={`/recipes/${recipe.slug}`}>{recipe.title}</Link>
             </li>
