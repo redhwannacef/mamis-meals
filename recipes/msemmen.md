@@ -3,8 +3,6 @@ title: Msemmen
 slug: msemmen
 ---
 
-# Msemmen
-
 Msemmen is a traditional Algerian pancake that is served with honey, jam, or butter. It is a popular breakfast dish in Algeria and is often enjoyed with a cup of tea or coffee.
 
 ## Ingredients

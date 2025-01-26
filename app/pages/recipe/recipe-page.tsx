@@ -1,5 +1,3 @@
-import type { Route } from "./+types/recipes-page";
-import styles from "./recipes-page.css?url";
 import { Link } from "react-router";
 import { recipes } from "virtual:recipes";
 import {
@@ -8,10 +6,13 @@ import {
   Content,
   styles as notebookStyles,
 } from "~/components/notebook/notebook";
+import type { Route } from "./+types/recipe-page";
+import styles from "./recipe-page.css?url";
 
-export function meta(): Route.MetaDescriptors {
+export function meta({ params }: Route.MetaArgs): Route.MetaDescriptors {
+  const title = recipes[params.slug].title;
   return [
-    { title: "Recipes | Mami's Meals" },
+    { title: `${title} | Mami's Meals` },
     {
       name: "description",
       content: "A collection of recipes for family and friends.",
@@ -26,23 +27,16 @@ export function links(): Route.LinkDescriptors {
   ];
 }
 
-export default function Page() {
+export default function Page({ params }: Route.ComponentProps) {
+  const recipe = recipes[params.slug];
   return (
     <main>
       <NotebookPage>
         <Header>
-          <Link to="/">‹ Front Cover</Link>
-          <h1>Recipes</h1>
+          <Link to="/recipes">‹ Recipes</Link>
+          <h1>{recipe.title}</h1>
         </Header>
-        <Content>
-          <ul>
-            {Object.values(recipes).map((recipe) => (
-              <li key={recipe.slug}>
-                <Link to={`/recipes/${recipe.slug}`}>{recipe.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </Content>
+        <Content dangerouslySetInnerHTML={{ __html: recipe.html }} />
       </NotebookPage>
     </main>
   );

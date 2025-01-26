@@ -6,8 +6,3 @@ body {
 main {
   height: 100vh;
 }
-
-ul {
-  padding-inline-start: 0;
-  list-style: none;
-}
