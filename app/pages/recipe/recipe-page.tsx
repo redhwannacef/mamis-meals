@@ -25,7 +25,6 @@ export function links(): Route.LinkDescriptors {
 
 export default function Page({ params }: Route.ComponentProps) {
   const recipe = recipes[params.slug];
-  console.log("test", recipe);
   if (!recipe) throw new Error("Recipe not found");
   return (
     <main>

@@ -1,9 +1,17 @@
 import type { Config } from "@react-router/dev/config";
 import { copyFileSync } from "node:fs";
 import { join } from "node:path";
+import { getRecipes } from "./recipesMdPlugin";
 
 export default {
   ssr: false,
+  async prerender({ getStaticPaths }) {
+    const recipeMap = await getRecipes();
+    const recipePaths = Object.keys(recipeMap).map(
+      (path) => `/recipes/${path}`,
+    );
+    return [...getStaticPaths(), ...recipePaths];
+  },
   buildEnd(args) {
     if (!args.viteConfig.isProduction) return;
 
