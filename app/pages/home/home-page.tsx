@@ -19,7 +19,7 @@ export function links(): Route.LinkDescriptors {
 export default function Page() {
   return (
     <main>
-      <header id="notebook-header">
+      <header>
         <h1>Mamis Meals</h1>
         <h2>A collection of recipes for family and friends, enjoy!</h2>
         <Link to="/recipes">Recipes ›</Link>

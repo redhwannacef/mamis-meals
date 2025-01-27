@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   type LinkDescriptor,
+  Link,
 } from "react-router";
 import type { Route } from "./+types/root";
 import resetStyles from "./styles/reset.css?url";
@@ -63,14 +64,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
+    <main style={{ textAlign: "center", marginBlockStart: "10rem" }}>
       <h1>{message}</h1>
       <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+      <Link to="/recipes">‹ Back to recipes</Link>
     </main>
   );
 }

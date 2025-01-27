@@ -1,5 +1,4 @@
 import type { Route } from "./+types/recipes-page";
-import styles from "./recipes-page.css?url";
 import { Link } from "react-router";
 import { recipes } from "virtual:recipes";
 import {
@@ -20,10 +19,7 @@ export function meta(): Route.MetaDescriptors {
 }
 
 export function links(): Route.LinkDescriptors {
-  return [
-    { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: notebookStyles },
-  ];
+  return [{ rel: "stylesheet", href: notebookStyles }];
 }
 
 export default function Page() {

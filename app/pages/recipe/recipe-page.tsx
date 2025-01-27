@@ -7,10 +7,9 @@ import {
   styles as notebookStyles,
 } from "~/components/notebook/notebook";
 import type { Route } from "./+types/recipe-page";
-import styles from "./recipe-page.css?url";
 
 export function meta({ params }: Route.MetaArgs): Route.MetaDescriptors {
-  const title = recipes[params.slug].title;
+  const title = recipes[params.slug]?.title || "Not Found";
   return [
     { title: `${title} | Mami's Meals` },
     {
@@ -21,14 +20,13 @@ export function meta({ params }: Route.MetaArgs): Route.MetaDescriptors {
 }
 
 export function links(): Route.LinkDescriptors {
-  return [
-    { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: notebookStyles },
-  ];
+  return [{ rel: "stylesheet", href: notebookStyles }];
 }
 
 export default function Page({ params }: Route.ComponentProps) {
   const recipe = recipes[params.slug];
+  console.log("test", recipe);
+  if (!recipe) throw new Error("Recipe not found");
   return (
     <main>
       <NotebookPage>
