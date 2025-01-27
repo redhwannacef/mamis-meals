@@ -33,7 +33,8 @@
   width: 100%;
   max-width: var(--notebook-width);
   margin-inline: auto;
-  padding-inline: 4rem;
+  padding-inline-start: 3rem;
+  padding-inline-end: 1rem;
   position: relative;
 
   &::before {
@@ -59,5 +60,10 @@
 
 #notebook article > * + * {
   margin-block-start: 36px;
+}
+
+#notebook ul,
+#notebook ol {
+  padding-inline-start: 1.5rem;
 }
 
