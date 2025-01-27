@@ -14,9 +14,9 @@ import globalStyles from "./styles/global.css?url";
 
 export function links(): Route.LinkDescriptors {
   return [
-    preloadFont("/mamis-meals/fonts/Kalam-Light.ttf"),
-    preloadFont("/mamis-meals/fonts/Kalam-Regular.ttf"),
-    preloadFont("/mamis-meals/fonts/Kalam-Bold.ttf"),
+    preloadFont("/fonts/Kalam-Light.ttf"),
+    preloadFont("/fonts/Kalam-Regular.ttf"),
+    preloadFont("/fonts/Kalam-Bold.ttf"),
     { rel: "stylesheet", href: resetStyles },
     { rel: "stylesheet", href: fontsStyles },
     { rel: "stylesheet", href: globalStyles },

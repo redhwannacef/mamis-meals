@@ -4,7 +4,6 @@ import { join } from "node:path";
 
 export default {
   ssr: false,
-  basename: "/mamis-meals/",
   buildEnd(args) {
     if (!args.viteConfig.isProduction) return;
 
