@@ -1,0 +1,16 @@
+.notebook .content .tags {
+  padding-inline-start: 0;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tags > li {
+  border: 1px solid black;
+  border-radius: 2rem;
+  padding-inline: 0.75rem;
+}

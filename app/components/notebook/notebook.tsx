@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 export { default as styles } from "./notebook.css?url";
 
 export function Page(props: ComponentProps<"section">) {
-  return <section id="notebook" {...props} />;
+  return <section className="notebook" {...props} />;
 }
 
 export function Header(props: ComponentProps<"header">) {
@@ -13,7 +13,7 @@ export function Header(props: ComponentProps<"header">) {
 export function Content(props: ComponentProps<"article">) {
   return (
     <section>
-      <article id="content" {...props} />
+      <article className="content" {...props} />
     </section>
   );
 }

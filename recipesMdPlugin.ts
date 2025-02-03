@@ -48,10 +48,11 @@ export async function getRecipes() {
     recipeMap[data["slug"]] = {
       title: data["title"],
       slug: data["slug"],
+      tags: data["tags"] || [],
       html: markdownit().render(content),
     };
   }
   return recipeMap;
 }
 
-type RecipeFile = { slug: string; title: string; html: string };
+type RecipeFile = { slug: string; title: string; html: string; tags: string[] };

@@ -1,4 +1,4 @@
-#notebook {
+.notebook {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -6,12 +6,12 @@
   --notebook-width: 800px;
 }
 
-#notebook h1 {
+.notebook h1 {
   font-size: 3rem;
   font-weight: normal;
 }
 
-#notebook > section {
+.notebook > section {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -19,17 +19,17 @@
   background-size: 100% 36px;
 }
 
-#notebook > header > :first-child {
+.notebook > header > :first-child {
   display: inline-block;
   margin-block-start: 1rem;
 }
 
-#notebook #content {
+.notebook .content {
   flex-grow: 1;
 }
 
-#notebook > header,
-#notebook #content {
+.notebook > header,
+.notebook .content {
   width: 100%;
   max-width: var(--notebook-width);
   margin-inline: auto;
@@ -49,21 +49,24 @@
   }
 }
 
-#notebook article {
+.notebook .content {
   padding-block-end: calc(36px * 10);
 }
 
-#notebook article * {
+.notebook .content * {
   font-size: 1.5rem;
   line-height: 36px;
 }
 
-#notebook article > * + * {
+.notebook .content > * + * {
   margin-block-start: 36px;
 }
 
-#notebook ul,
-#notebook ol {
-  padding-inline-start: 1.5rem;
+.notebook .content .lines > * + * {
+  margin-block-start: 36px;
 }
 
+.notebook .content ul,
+.notebook .content ol {
+  padding-inline-start: 1.5rem;
+}

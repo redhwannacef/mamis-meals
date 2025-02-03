@@ -1,6 +1,7 @@
 ---
 title: Sourdough Bread (Redhwan's Style)
 slug: sourdough-bread-redhwan-style
+tags: [Bread]
 ---
 
 My interpretation of sourdough bread...

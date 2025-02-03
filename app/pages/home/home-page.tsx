@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home-page";
-import style from "./home-page.css?url";
 import { Link } from "react-router";
+import styles from "./home-page.css?url";
 
 export function meta(): Route.MetaDescriptors {
   return [
@@ -13,7 +13,7 @@ export function meta(): Route.MetaDescriptors {
 }
 
 export function links(): Route.LinkDescriptors {
-  return [{ rel: "stylesheet", href: style }];
+  return [{ rel: "stylesheet", href: styles }];
 }
 
 export default function Page() {
