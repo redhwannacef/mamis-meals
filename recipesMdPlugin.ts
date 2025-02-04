@@ -22,8 +22,9 @@ export function recipesMdPlugin(): Plugin {
 
     async load(id: string) {
       if (id === resolvedVirtualModuleId) {
-        const recipeMap = await getRecipes();
-        return `export const recipes = ${JSON.stringify(recipeMap)}`;
+        const recipes = await getRecipes();
+        const tags = getTags(recipes);
+        return `export const recipes = ${JSON.stringify(recipes)}, tags = ${JSON.stringify(tags)};`;
       }
     },
 
@@ -53,6 +54,13 @@ export async function getRecipes() {
     };
   }
   return recipeMap;
+}
+
+function getTags(recipeMap: Record<string, RecipeFile>) {
+  const uniqueTags = new Set(
+    Object.values(recipeMap).flatMap((recipe) => recipe.tags),
+  );
+  return Array.from(uniqueTags);
 }
 
 type RecipeFile = { slug: string; title: string; html: string; tags: string[] };

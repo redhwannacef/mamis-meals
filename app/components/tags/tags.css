@@ -1,5 +1,10 @@
 .notebook .content .tags {
   padding-inline-start: 0;
+
+  & :has(.active) {
+    font-weight: bold;
+    border-width: 2px;
+  }
 }
 
 .tags {

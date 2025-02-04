@@ -7,7 +7,7 @@ import {
   styles as notebookStyles,
 } from "~/components/notebook/notebook";
 import type { Route } from "./+types/recipe-page";
-import styles from "./recipe-page.css?url";
+import { Tags, styles as tagsStyles } from "~/components/tags/tags";
 
 export function meta({ params }: Route.MetaArgs): Route.MetaDescriptors {
   const title = recipes[params.slug]?.title || "Not Found";
@@ -22,8 +22,8 @@ export function meta({ params }: Route.MetaArgs): Route.MetaDescriptors {
 
 export function links(): Route.LinkDescriptors {
   return [
-    { rel: "stylesheet", href: styles },
     { rel: "stylesheet", href: notebookStyles },
+    { rel: "stylesheet", href: tagsStyles },
   ];
 }
 
@@ -38,7 +38,7 @@ export default function Page({ params }: Route.ComponentProps) {
           <h1>{recipe.title}</h1>
         </Header>
         <Content>
-          <Tags tags={recipe.tags} />
+          <Tags tags={recipe.tags} hideAllTag />
           <article
             className="lines"
             dangerouslySetInnerHTML={{ __html: recipe.html }}
@@ -46,17 +46,5 @@ export default function Page({ params }: Route.ComponentProps) {
         </Content>
       </NotebookPage>
     </main>
-  );
-}
-
-function Tags({ tags }: { tags: string[] }) {
-  if (!tags.length) return null;
-
-  return (
-    <ul className="tags">
-      {tags.map((tag) => (
-        <li key={tag}>{tag}</li>
-      ))}
-    </ul>
   );
 }
