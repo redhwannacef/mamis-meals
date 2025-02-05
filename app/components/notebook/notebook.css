@@ -70,3 +70,13 @@
 .notebook .content ol {
   padding-inline-start: 1.5rem;
 }
+
+.notebook .content ul {
+  list-style-type: none;
+}
+
+.notebook .content ul li:before {
+  content: "-";
+  padding-inline-end: 0.5em;
+  margin-inline-start: -1.5rem;
+}
