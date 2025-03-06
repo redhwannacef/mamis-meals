@@ -80,3 +80,17 @@
   padding-inline-end: 0.5em;
   margin-inline-start: -1.5rem;
 }
+
+.notebook .image-wrapper {
+  height: calc(36px * 7);
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.notebook .image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+}

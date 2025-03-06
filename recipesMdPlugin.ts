@@ -1,6 +1,7 @@
 import { type Plugin } from "vite";
 import fs from "node:fs/promises";
 import graymatter from "gray-matter";
+import type MarkdownIt from "markdown-it";
 import markdownit from "markdown-it";
 
 export function recipesMdPlugin(): Plugin {
@@ -43,6 +44,7 @@ export function recipesMdPlugin(): Plugin {
 
 export async function getRecipes() {
   const recipeMap: Record<string, RecipeFile> = {};
+  const markdownRenderer = getMarkdownRenderer();
   for (const recipeFile of await fs.readdir("./recipes")) {
     const recipe = await fs.readFile(`./recipes/${recipeFile}`, "utf-8");
     const { data, content } = graymatter(recipe);
@@ -50,10 +52,16 @@ export async function getRecipes() {
       title: data["title"],
       slug: data["slug"],
       tags: data["tags"] || [],
-      html: markdownit().render(content),
+      html: markdownRenderer.render(content),
     };
   }
   return recipeMap;
+}
+
+function getMarkdownRenderer() {
+  const markdown = markdownit();
+  markdown.use(unwrapImagesPlugin);
+  return markdown;
 }
 
 function getTags(recipeMap: Record<string, RecipeFile>) {
@@ -64,3 +72,16 @@ function getTags(recipeMap: Record<string, RecipeFile>) {
 }
 
 type RecipeFile = { slug: string; title: string; html: string; tags: string[] };
+
+function unwrapImagesPlugin(md: MarkdownIt) {
+  const defaultRender =
+    md.renderer.rules.image ||
+    function (tokens, idx, options, env, self) {
+      return self.renderToken(tokens, idx, options);
+    };
+
+  md.renderer.rules.image = function (tokens, idx, options, env, self) {
+    const imageHtml = defaultRender(tokens, idx, options, env, self);
+    return `<div class="image-wrapper">${imageHtml}</div>`; // Wrap the image in a div instead of <p>
+  };
+}
