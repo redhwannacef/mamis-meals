@@ -12,7 +12,7 @@ Mami's Baghrir recipe.
 - 1 cup self-raising flour
 - 1 tsp baking powder
 - 1 tsp yeast
-- 3/4 tsp salt
+- ¾ tsp salt
 - Pinch of sugar
 - 1 tsp vinegar
 - 2 cup warm water
