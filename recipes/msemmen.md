@@ -10,7 +10,7 @@ Msemmen is a traditional Algerian pancake that is served with honey, jam, or but
 
 - 2 cups of fine semolina
 - 1 cup of bread flour
-- 1 teaspoon of salt
+- 1 tsp of salt
 - 1 1/4 cups of water
 
 ## Instructions
