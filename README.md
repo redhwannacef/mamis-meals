@@ -18,3 +18,6 @@ This will automatically update the website.
 > The slug is used as the url and title is used as the title of the recipe.
 
 > Note 2: Images have been created in [Excalidraw](https://excalidraw.com/) and are stored in the `public/images` directory.
+
+> Note 3: For sketches use `.png` format and for photos use `.webp` format.
+

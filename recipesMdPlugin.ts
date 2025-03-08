@@ -73,6 +73,11 @@ function getTags(recipeMap: Record<string, RecipeFile>) {
 
 type RecipeFile = { slug: string; title: string; html: string; tags: string[] };
 
+const extensionVariant: Record<string, string> = {
+  webp: "photo",
+  png: "sketch",
+};
+
 function unwrapImagesPlugin(md: MarkdownIt) {
   const defaultRender =
     md.renderer.rules.image ||
@@ -82,6 +87,17 @@ function unwrapImagesPlugin(md: MarkdownIt) {
 
   md.renderer.rules.image = function (tokens, idx, options, env, self) {
     const imageHtml = defaultRender(tokens, idx, options, env, self);
-    return `<div class="image-wrapper">${imageHtml}</div>`; // Wrap the image in a div instead of <p>
+
+    const imageExtension = getExtension(tokens[idx]);
+    const variant = extensionVariant[imageExtension] || "";
+
+    return `<div class="image-wrapper" data-variant="${variant}"><div>${imageHtml}</div></div>`; // Wrap the image in a div instead of <p>
   };
+}
+
+// @ts-ignore
+function getExtension(token: MarkdownIt.Token): string {
+  const src = token.attrGet("src");
+  if (!src) throw new Error("Image token has no src attribute");
+  return src.split(".").pop();
 }
