@@ -48,11 +48,14 @@ export async function getRecipes() {
   for (const recipeFile of await fs.readdir("./recipes")) {
     const recipe = await fs.readFile(`./recipes/${recipeFile}`, "utf-8");
     const { data, content } = graymatter(recipe);
+    const env = emptyEnv();
+    const html = markdownRenderer.render(content, env);
     recipeMap[data["slug"]] = {
       title: data["title"],
       slug: data["slug"],
       tags: data["tags"] || [],
-      html: markdownRenderer.render(content),
+      html,
+      images: env.imageSources,
     };
   }
   return recipeMap;
@@ -61,6 +64,7 @@ export async function getRecipes() {
 function getMarkdownRenderer() {
   const markdown = markdownit();
   markdown.use(unwrapImagesPlugin);
+  markdown.use(collectImagesPlugin);
   return markdown;
 }
 
@@ -71,7 +75,13 @@ function getTags(recipeMap: Record<string, RecipeFile>) {
   return Array.from(uniqueTags);
 }
 
-type RecipeFile = { slug: string; title: string; html: string; tags: string[] };
+type RecipeFile = {
+  slug: string;
+  title: string;
+  html: string;
+  tags: string[];
+  images: string[];
+};
 
 const extensionVariant: Record<string, string> = {
   webp: "photo",
@@ -95,9 +105,32 @@ function unwrapImagesPlugin(md: MarkdownIt) {
   };
 }
 
-// @ts-ignore
-function getExtension(token: MarkdownIt.Token): string {
+function collectImagesPlugin(md: MarkdownIt) {
+  md.core.ruler.push("collect_images", collectImages);
+}
+
+function collectImages(state: StateCore) {
+  state.env.imageSources = state.tokens
+    .flatMap((token: Token) => token.children ?? [])
+    .filter((token: Token) => token.type === "image")
+    .map((token: Token) => token.attrGet("src"));
+}
+
+function getExtension(token: Token): string {
   const src = token.attrGet("src");
   if (!src) throw new Error("Image token has no src attribute");
   return src.split(".").pop();
 }
+
+function emptyEnv(): MarkdownEnv {
+  return { imageSources: [] };
+}
+
+type MarkdownEnv = {
+  imageSources: string[];
+};
+
+// @ts-expect-error
+type Token = MarkdownIt.Token;
+// @ts-expect-error
+type StateCore = MarkdownIt.StateCore;

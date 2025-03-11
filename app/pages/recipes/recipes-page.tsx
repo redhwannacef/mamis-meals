@@ -34,7 +34,13 @@ export default function Page() {
           <ul>
             {Object.values(recipes).map((recipe) => (
               <li key={recipe.slug}>
-                <Link to={`/recipes/${recipe.slug}`}>{recipe.title}</Link>
+                <Link
+                  to={`/recipes/${recipe.slug}`}
+                  onMouseEnter={() => prefetchImages(recipe.images)}
+                  onFocus={() => prefetchImages(recipe.images)}
+                >
+                  {recipe.title}
+                </Link>
               </li>
             ))}
           </ul>
@@ -42,4 +48,11 @@ export default function Page() {
       </NotebookPage>
     </main>
   );
+}
+
+function prefetchImages(images: string[]) {
+  images.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
 }
