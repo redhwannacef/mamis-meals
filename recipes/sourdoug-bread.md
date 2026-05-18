@@ -11,27 +11,28 @@ My interpretation of sourdough bread...
 ## Ingredients
 
 - 10g salt
-- 325g water
-- 100g Sourdough Starter
-- 90g wholemeal bread flour
-- 360g white bread flour
+- 360g water
+- 50g Sourdough Starter
+- 100g wholemeal bread flour
+- 400g white bread flour
 
 ## Instructions
 
 1. Mix the salt, water and starter until well mixed.
 2. Add the flours and mix a bit until the dough forms.
-3. Leave rest for 30 minutes covered.
-4. Repeat three times: stretch and fold and leave for an hour covered.
-5. One final stretch and fold (no leaving for an hour here)
-6. Take out the dough and pre-shape it into a ball.
-7. Leave rest for 30 minutes.
-8. Dust with flour, so it doesn't stick, final shape and place in a banneton.
-9. Cover and leave to rise for an hour.
-10. Leave in the fridge overnight.
-11. Preheat the oven to 250C with a Dutch oven inside.
-12. Bake for 20 minutes with the lid on, then 15 minutes with the lid off.
+3. Timeline:
+   - 30 min: stretch and fold (autolyse).
+   - 60 min: stretch and fold.
+   - 90 min: stretch and fold.
+   - 120 min: stretch and fold.
+   - 150 min: stretch and fold.
+   - 240 min: take it out, pre-shape and leave on counter uncovered
+   - 270 min: final shape, put it into the banneton, and leave it covered.
+   - 300 min: pop it into the fridge overnight.
+4. Preheat the oven to 250C with a Dutch oven inside.
+5. Bake for 30 minutes with the lid on, then 15 minutes with the lid off.
 
-### Tips:
+### Tips
 
 1. Spray bread and put ice cubes in before putting in the oven for a crispy outside, this creates steam which helps with crusty outside.
 2. First stretch and fold, knead the dough a bit to get a smooth ball
